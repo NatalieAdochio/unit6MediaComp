@@ -54,6 +54,14 @@ public class PictureTester
     caterpillar.mirrorVertical();
     caterpillar.explore();
   }
+  
+  public static void testCropAndCopy()
+  {
+      Picture source = new Picture("beach.jpg");
+      Picture katie = new Picture("KatieFancy.jpg");
+      source.cropAndCopy(katie, 25,77,85,124,97,236);
+      source.explore();
+    }
    public static void testMirrorVerticalRightToLeft()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -149,7 +157,7 @@ public class PictureTester
     testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    //testCopy();
+    testCropAndCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
