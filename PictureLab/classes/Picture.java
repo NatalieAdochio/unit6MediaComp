@@ -271,17 +271,17 @@ public class Picture extends SimplePicture
 
     public void mirrorGull() 
     {
-        int mirrorPoint = 362;
+        int mirrorPoint = 257;
         Pixel leftPixel = null;
         Pixel rightPixel = null;
         int count = 0;
         Pixel[][] pixels = this.getPixels2D();
 
         // loop through the rows
-        for (int row = 225; row < 328; row++)
+        for (int row = 0; row < 194; row++)
         {
             // loop from 13 to just before the mirror point
-            for (int col = 233; col < mirrorPoint; col++)
+            for (int col = 255; col < mirrorPoint; col++)
             {
 
                 leftPixel = pixels[row][col];      
@@ -381,8 +381,9 @@ public class Picture extends SimplePicture
             }
         }   
     }
+
     /**making a picture that you can cut and copy
-       * @param fromPic the picture to copy from
+     * @param fromPic the picture to copy from
      * @param startRow the start row to copy to
      * @param startCol the start col to copy to*/
     public void cropAndCopy( Picture sourcePicture, int startSourceRow, int endSourceRow, int startSourceCol, int endSourceCol,
@@ -410,27 +411,61 @@ public class Picture extends SimplePicture
     }
 
     /** Method to create a collage of several pictures */
+    //     public void createCollage()
+    //     {
+    //         Picture flower1 = new Picture("flower1.jpg");
+    //         Picture flower2 = new Picture("flower2.jpg");
+    //         this.copy(flower1,0,0);
+    //         this.copy(flower2,100,0);
+    //         this.copy(flower1,200,0);
+    //         Picture flowerNoBlue = new Picture(flower2);
+    //         flowerNoBlue.zeroBlue();
+    //         this.copy(flowerNoBlue,300,0);
+    //         this.copy(flower1,400,0);
+    //         this.copy(flower2,500,0);
+    //         this.mirrorVertical();
+    //         this.write("collage.jpg");
+    //     }
+
+    /**
+    */
     public void createCollage()
     {
-        Picture flower1 = new Picture("flower1.jpg");
-        Picture flower2 = new Picture("flower2.jpg");
-        this.copy(flower1,0,0);
-        this.copy(flower2,100,0);
-        this.copy(flower1,200,0);
-        Picture flowerNoBlue = new Picture(flower2);
-        flowerNoBlue.zeroBlue();
-        this.copy(flowerNoBlue,300,0);
-        this.copy(flower1,400,0);
-        this.copy(flower2,500,0);
-        this.mirrorVertical();
-        this.write("collage.jpg");
+        Picture eye = new Picture("download.jpg");
+        Picture eye2 = new Picture("download.jpg");
+        Picture eye3 = new Picture("download.jpg");
+        Picture eye4 = new Picture("download.jpg");
+        this.scaleByHalf();
+        eye.grayScale();
+        eye.mirrorVertical();
+        this.copy(eye,0,0);
+        this.copy(eye2,0,256);
+        Picture scaryEye = new Picture(eye3);
+        Picture scaryEye2 = new Picture(eye4);
+        scaryEye.negate();
+        scaryEye.mirrorVertical();
+        this.copy(scaryEye,195,256);
+        scaryEye2.negate();
+        scaryEye2.mirrorVertical();
+        this.copy(scaryEye2,195,0);
+        this.mirrorHorizontal();
+        scaryEye2.mirrorVertical();
+        
+
     }
-    
-    
+
     public Picture scaleByHalf()
     {
-        
+        Pixel fromPixel = null;
+        Picture eye = new Picture("download.jpg");
+        Pixel[][] fromPixels = this.getPixels2D();
+        int height = fromPixels.length;
+        int width = fromPixels[0].length;
+        int newHeight = fromPixels.length/2;
+        int newWidth = fromPixels[0].length/2;
+        return eye;
     }
+
     /** Method to show large changes in color 
      * @param edgeDist the distance for finding edges
      */

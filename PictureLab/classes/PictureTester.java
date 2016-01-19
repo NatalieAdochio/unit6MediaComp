@@ -62,6 +62,14 @@ public class PictureTester
       source.cropAndCopy(katie, 25,77,85,124,97,236);
       source.explore();
     }
+    
+   
+  public static void testScaleByHalf()
+  {
+      Picture source = new Picture("download.jpg");
+      source.scaleByHalf();
+      source.explore();
+    }
    public static void testMirrorVerticalRightToLeft()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -155,6 +163,7 @@ public class PictureTester
     testMirrorDiagonal();
     testMirrorArms();
     testMirrorGull();
+    testScaleByHalf();
     //testMirrorDiagonal();
     //testCollage();
     testCropAndCopy();
