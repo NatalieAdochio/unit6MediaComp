@@ -327,8 +327,8 @@ public class Picture extends SimplePicture
         {
             for (Pixel pixelObj : rowArray)
             {
-                pixelObj.setRed(pixelObj.getRed()+60);
-                pixelObj.setGreen(pixelObj.getGreen()-50);
+                pixelObj.setRed(255);
+                pixelObj.setGreen(0);
                 pixelObj.setBlue(pixelObj.getBlue()+20);
             }
         }
@@ -435,9 +435,11 @@ public class Picture extends SimplePicture
         Picture eye2 = new Picture("download.jpg");
         Picture eye3 = new Picture("download.jpg");
         Picture eye4 = new Picture("download.jpg");
+        Picture eye5 = new Picture("download.jpg");
         this.scaleByHalf();
         eye.grayScale();
         eye.mirrorVertical();
+        eye2.mirrorDiagonalNOTRighy();
         this.copy(eye,0,0);
         this.copy(eye2,0,256);
         Picture scaryEye = new Picture(eye3);
@@ -449,9 +451,20 @@ public class Picture extends SimplePicture
         scaryEye2.mirrorVertical();
         this.copy(scaryEye2,195,0);
         this.mirrorHorizontal();
+        Picture scaryEye3 = new Picture(eye5);
         scaryEye2.mirrorVertical();
-        
-
+        scaryEye3.negate();
+        scaryEye3.mirrorVertical();
+        scaryEye3.mirrorHorizontal();
+        this.cropAndCopy(scaryEye3,85,115,115,145,196,239);//top
+        this.cropAndCopy(scaryEye3,85,115,115,145,227,239);//middle
+        this.cropAndCopy(scaryEye3,85,115,115,145,227,269);//right
+        this.cropAndCopy(scaryEye3,85,115,115,145,227,208);//left
+        this.cropAndCopy(scaryEye3,85,115,115,145,256,239);//bottom
+        this.cropAndCopy(scaryEye3,85,115,115,145,196,270);//top right
+        this.cropAndCopy(scaryEye3,85,115,115,145,196,206);//top left
+        this.cropAndCopy(scaryEye3,85,115,115,145,256,269);//bot right
+        this.cropAndCopy(scaryEye3,85,115,115,145,256,208);//bot left
     }
 
     public Picture scaleByHalf()
