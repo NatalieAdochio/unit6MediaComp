@@ -327,9 +327,9 @@ public class Picture extends SimplePicture
         {
             for (Pixel pixelObj : rowArray)
             {
-                pixelObj.setRed(255);
+                pixelObj.setRed(200);
                 pixelObj.setGreen(0);
-                pixelObj.setBlue(pixelObj.getBlue()+20);
+                pixelObj.setBlue(0);
             }
         }
     }
@@ -431,6 +431,7 @@ public class Picture extends SimplePicture
     */
     public void createCollage()
     {
+        //making all the eyes
         Picture eye = new Picture("download.jpg");
         Picture eye2 = new Picture("download.jpg");
         Picture eye3 = new Picture("download.jpg");
@@ -440,6 +441,7 @@ public class Picture extends SimplePicture
         eye.grayScale();
         eye.mirrorVertical();
         eye2.mirrorDiagonalNOTRighy();
+        eye2.mirrorVertical();
         this.copy(eye,0,0);
         this.copy(eye2,0,256);
         Picture scaryEye = new Picture(eye3);
@@ -465,6 +467,7 @@ public class Picture extends SimplePicture
         this.cropAndCopy(scaryEye3,85,115,115,145,196,206);//top left
         this.cropAndCopy(scaryEye3,85,115,115,145,256,269);//bot right
         this.cropAndCopy(scaryEye3,85,115,115,145,256,208);//bot left
+        this.write("Eyes.jpg");
     }
 
     public Picture scaleByHalf()
